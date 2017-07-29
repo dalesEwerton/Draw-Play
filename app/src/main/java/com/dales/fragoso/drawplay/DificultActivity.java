@@ -1,20 +1,18 @@
 package com.dales.fragoso.drawplay;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class DificultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_dificult);
+
 
         android.support.v7.app.ActionBar bar = getSupportActionBar();
 
@@ -28,8 +26,24 @@ public class MainMenuActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
     }
 
-    public void gameStart(View view) {
-        Intent it = new Intent(MainMenuActivity.this, DificultActivity.class);
-        startActivity(it);
+    public void easySelected(View view) {
+        goToTeam(view, Dificulty.FACIL);
+    }
+
+    public void mediumSelected(View view) {
+        goToTeam(view, Dificulty.MEDIO);
+    }
+
+    public void hardSelected(View view) {
+        goToTeam(view, Dificulty.DIFICIL);
+    }
+
+    public void trollSelected(View view) {
+        goToTeam(view, Dificulty.TROLL);
+    }
+
+    private void goToTeam(View view, Dificulty dificulty) {
+
+        //Implementar
     }
 }
