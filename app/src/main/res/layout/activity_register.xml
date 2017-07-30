@@ -190,6 +190,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:background="@android:drawable/button_onoff_indicator_on"
+        android:onClick="registerTeam"
         android:text="Casdastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
