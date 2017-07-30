@@ -1,9 +1,11 @@
 package com.dales.fragoso.drawplay.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.dales.fragoso.drawplay.Controller.DificultyController;
 import com.dales.fragoso.drawplay.Model.Dificulty;
 import com.dales.fragoso.drawplay.R;
 
@@ -37,7 +39,10 @@ public class DificultActivity extends AppCompatActivity {
     }
 
     private void goToTeam(View view, Dificulty dificulty) {
+        DificultyController dificultyController = DificultyController.getDificultyInstance();
 
-        //Implementar
+        dificultyController.setDificulty(dificulty);
+        Intent it = new Intent(DificultActivity.this, TeamsActivity.class);
+        startActivity(it);
     }
 }

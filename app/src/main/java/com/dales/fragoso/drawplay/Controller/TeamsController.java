@@ -40,7 +40,7 @@ public class TeamsController {
 
         return this.teamList.remove(team);
     }
-    
+
     public Team getTeam(String teamName) {
         for (Team team :
              this.teamList) {
