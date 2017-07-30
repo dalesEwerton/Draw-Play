@@ -1,10 +1,11 @@
-package com.dales.fragoso.drawplay;
+package com.dales.fragoso.drawplay.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+
+import com.dales.fragoso.drawplay.Model.Dificulty;
+import com.dales.fragoso.drawplay.R;
 
 public class DificultActivity extends AppCompatActivity {
 
@@ -17,13 +18,6 @@ public class DificultActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar bar = getSupportActionBar();
 
         bar.hide();
-
-        View decorView = getWindow().getDecorView();
-
-        // Escondendo a barra de navegação e a barra de status .
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
     }
 
     public void easySelected(View view) {
