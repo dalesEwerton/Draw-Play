@@ -6,24 +6,23 @@ import com.dales.fragoso.drawplay.Model.Dificulty;
  * Created by dales on 30/07/2017.
  */
 
-public class DificultyController {
+public final class DificultyController {
 
-    private static Dificulty dificulty;
-    private static DificultyController dificultyInstance;
+    private static Dificulty dificulty = Dificulty.FACIL;
+    private static final DificultyController dificultyInstance = new DificultyController();
 
     private DificultyController() {
-        dificulty = Dificulty.FACIL;
     }
 
-    public static synchronized DificultyController getDificultyInstance() {
-        if(dificultyInstance == null) {
-            dificultyInstance = new DificultyController();
-        }
-
+    public static DificultyController getInstance() {
         return dificultyInstance;
     }
 
-    public void setDificulty(Dificulty dificulty) {
-        this.dificulty = dificulty;
+    public static void setDificulty(Dificulty dif) {
+        dificulty = dif;
+    }
+
+    public static Dificulty getDificulty() {
+        return dificulty;
     }
 }

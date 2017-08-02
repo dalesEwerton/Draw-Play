@@ -2,6 +2,7 @@ package com.dales.fragoso.drawplay.Controller;
 
 import com.dales.fragoso.drawplay.Model.Team;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,41 +10,36 @@ import java.util.List;
  * Created by dales on 30/07/2017.
  */
 
-public class TeamsController {
+public final class TeamsController {
 
-    private List<Team> teamList;
-    private static TeamsController teamsInstance;
+    private static List<Team> teamList = new ArrayList<>();
+    private static final TeamsController teamsInstance = new TeamsController();
 
     private TeamsController() {
-        teamList = new LinkedList<>();
     }
 
-    public static synchronized TeamsController getTeamsInstance() {
-        if(teamsInstance == null) {
-            teamsInstance = new TeamsController();
-        }
-
+    public static TeamsController getInstance() {
         return teamsInstance;
     }
 
-    public void addTeam(String teamName, String[] teamMembers) {
+    public static void addTeam(String teamName, String[] teamMembers) {
         Team team = new Team(teamName, teamMembers);
         addTeam(team);
     }
 
-    private void addTeam(Team team) {
+    private static void addTeam(Team team) {
         teamList.add(team);
     }
 
-    public boolean removeTeam(String teamName) {
+    public static boolean removeTeam(String teamName) {
         Team team = getTeam(teamName);
 
-        return this.teamList.remove(team);
+        return teamList.remove(team);
     }
 
-    public Team getTeam(String teamName) {
+    public static Team getTeam(String teamName) {
         for (Team team :
-             this.teamList) {
+             teamList) {
 
             if(team.getTeamName().equals(teamName)) {
                 return team;
@@ -51,5 +47,9 @@ public class TeamsController {
         }
 
         return null;
+    }
+
+    public static List<Team> getTeamList() {
+        return teamList;
     }
 }

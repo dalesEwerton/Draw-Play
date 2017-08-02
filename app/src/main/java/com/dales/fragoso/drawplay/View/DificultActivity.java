@@ -39,7 +39,7 @@ public class DificultActivity extends AppCompatActivity {
     }
 
     private void goToTeam(View view, Dificulty dificulty) {
-        DificultyController dificultyController = DificultyController.getDificultyInstance();
+        DificultyController dificultyController = DificultyController.getInstance();
 
         dificultyController.setDificulty(dificulty);
         Intent it = new Intent(DificultActivity.this, TeamsActivity.class);

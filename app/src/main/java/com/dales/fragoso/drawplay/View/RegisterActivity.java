@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
                     members[3] = member4.getText().toString();
                 }
 
-                TeamsController.getTeamsInstance().addTeam(teamName.getText().toString(), members);
+                TeamsController.getInstance().addTeam(teamName.getText().toString(), members);
                 Intent it = new Intent(RegisterActivity.this, TeamsActivity.class);
                 startActivity(it);
 
