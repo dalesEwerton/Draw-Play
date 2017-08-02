@@ -13,6 +13,7 @@ import java.util.List;
 public final class TeamsController {
 
     private static List<Team> teamList = new ArrayList<>();
+    private static List<Team> teamsPlaying = null;
     private static final TeamsController teamsInstance = new TeamsController();
 
     private TeamsController() {
@@ -51,5 +52,13 @@ public final class TeamsController {
 
     public static List<Team> getTeamList() {
         return teamList;
+    }
+
+    public static List<Team> getTeamsPlaying() {
+        return teamsPlaying;
+    }
+
+    public static void setTeamsPlaying(List<Team> teams) {
+        teamsPlaying = teams;
     }
 }

@@ -10,6 +10,7 @@ import com.dales.fragoso.drawplay.Controller.TeamsController;
 import com.dales.fragoso.drawplay.Model.Team;
 import com.dales.fragoso.drawplay.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeamsActivity extends AppCompatActivity {
@@ -63,7 +64,22 @@ public class TeamsActivity extends AppCompatActivity {
         return boxes;
     }
 
-    public void selecionar() {
-        //Implementar apos criar view do jogo em andamento
+    public void select(View view) {
+        CheckBox[] cbs = getArrayOfCheckBox();
+        List<Team> teams = new ArrayList<>();
+        TeamsController teamsCtrl = TeamsController.getInstance();
+
+        for(CheckBox cb : cbs) {
+            if(cb.isChecked()) {
+                Team tm = teamsCtrl.getTeam(cb.getText().toString());
+                teams.add(tm);
+            }
+        }
+
+        teamsCtrl.setTeamsPlaying(teams);
+
+        Intent it = new Intent(TeamsActivity.this, GameActivity.class);
+        startActivity(it);
+
     }
 }
