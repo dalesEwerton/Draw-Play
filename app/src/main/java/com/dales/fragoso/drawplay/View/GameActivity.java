@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dales.fragoso.drawplay.Controller.DificultyController;
+import com.dales.fragoso.drawplay.Controller.EndGameController;
 import com.dales.fragoso.drawplay.Controller.ImagesController;
 import com.dales.fragoso.drawplay.Controller.TeamsController;
 import com.dales.fragoso.drawplay.Model.Dificulty;
@@ -23,8 +24,11 @@ import com.dales.fragoso.drawplay.R;
 public class GameActivity extends AppCompatActivity {
 
     public static Chronometer crn;
+    private Team champion;
+    private long champPoints = 0;
+    private long atualTeamPoints = 0;
     final Handler handler = new Handler();
-    public static CountDownTimer countDownTimer;
+    private static CountDownTimer countDownTimer;
     int numberOfTeamPLaying = 0;
 
     @Override
@@ -47,8 +51,14 @@ public class GameActivity extends AppCompatActivity {
 
         final TeamsController teamsController =TeamsController.getInstance();
         Team atualTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
-        savePoints(atualTeam);
+        long timePoints = atualTeamPoints;
         countDownTimer.cancel();
+        atualTeamPoints = 0;
+
+        if(timePoints > champPoints) {
+            champion = atualTeam;
+            champPoints = timePoints;
+        }
 
         if(numberOfTeamPLaying < teamsController.getTeamsPlaying().size() - 1){
 
@@ -67,7 +77,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         }else {
-            //Contabilizar o resultado
+            EndGameController endGame = EndGameController.getInstance();
+            endGame.setTeamWinner(champion);
             Intent it = new Intent(GameActivity.this, EndGameMainActivity.class);
             startActivity(it);
         }
@@ -117,6 +128,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 updateTimer((int) millisUntilFinished / 1000);
+                atualTeamPoints = millisUntilFinished/1000;
             }
 
             @Override
@@ -129,12 +141,5 @@ public class GameActivity extends AppCompatActivity {
                 crn.setText("00:00");
             }
         }.start();
-    }
-
-    private void savePoints(Team team) {
-        String[] pointsCrn = crn.getText().toString().split(":");
-        int finalPoints = Integer.valueOf(pointsCrn[0]+pointsCrn[1]);
-
-        team.addPoints(finalPoints);
     }
 }
