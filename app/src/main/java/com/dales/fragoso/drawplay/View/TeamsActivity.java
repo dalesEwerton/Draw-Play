@@ -28,7 +28,7 @@ public class TeamsActivity extends AppCompatActivity {
         int indexOfBox = 0;
 
         for(Team team : teams) {
-            System.out.println(team.teamName);
+            System.out.println(team.getTeamName());
             boxes[indexOfBox].setText(team.getTeamName());
             indexOfBox++;
         }

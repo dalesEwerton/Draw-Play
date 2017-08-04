@@ -1,27 +1,31 @@
 package com.dales.fragoso.drawplay.View;
 
-import android.media.Image;
-import android.media.MediaPlayer;
+import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dales.fragoso.drawplay.Controller.DificultyController;
 import com.dales.fragoso.drawplay.Controller.ImagesController;
 import com.dales.fragoso.drawplay.Controller.TeamsController;
+import com.dales.fragoso.drawplay.Model.Dificulty;
 import com.dales.fragoso.drawplay.Model.ImageSrc;
 import com.dales.fragoso.drawplay.Model.Team;
 import com.dales.fragoso.drawplay.R;
 
-import java.util.List;
-
 public class GameActivity extends AppCompatActivity {
 
-    Chronometer crn;
+    public static Chronometer crn;
+    final Handler handler = new Handler();
+    public static CountDownTimer countDownTimer;
+    int numberOfTeamPLaying = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +36,58 @@ public class GameActivity extends AppCompatActivity {
         bar.hide();
 
         crn = (Chronometer) findViewById(R.id.chronommeter);
-        controlTimer(findViewById(R.id.chronommeter));
 
-        List<Team> teamsPlaying = TeamsController.getInstance().getTeamsPlaying();
-        makeGame(teamsPlaying);
-
-        ImageView img = (ImageView) findViewById(R.id.imageInGame);
-        TextView textView = (TextView) findViewById(R.id.respostaTextView);
-
-        ImagesController imgController = new ImagesController(DificultyController.getInstance().getDificulty());
-        ImageSrc imag = imgController.getRandImage();
-        img.setBackgroundResource(imag.getDrawableNum());
-        textView.setText(imag.getImageName());
+        TeamsController teamsController = TeamsController.getInstance();
+        Team initialTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
+        makeSingleGame(initialTeam);
     }
 
-    private void makeGame(List<Team> teamsPlaying) {
 
+    public void feito(View view) {
+
+        final TeamsController teamsController =TeamsController.getInstance();
+        Team atualTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
+        savePoints(atualTeam);
+        countDownTimer.cancel();
+
+        if(numberOfTeamPLaying < teamsController.getTeamsPlaying().size() - 1){
+
+            numberOfTeamPLaying++;
+
+            Toast toast = Toast.makeText(getApplication(), "A proxima equipe iniciará em 10 segundos", Toast.LENGTH_LONG);
+            toast.show();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Team nextTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
+                    makeSingleGame(nextTeam);
+                }
+            }, 10000);
+
+
+        }else {
+            //Contabilizar o resultado
+            Intent it = new Intent(GameActivity.this, EndGameMainActivity.class);
+            startActivity(it);
+        }
+
+    }
+
+    private void makeSingleGame(Team team) {
+        ImageView img = (ImageView) findViewById(R.id.imageInGame);
+        TextView resposta = (TextView) findViewById(R.id.respostaTextView);
+        TextView teamName = (TextView) findViewById(R.id.EquipeNameTextView);
+
+        controlTimer(findViewById(R.id.gamePlayLayout));
+
+        Dificulty dificulty = DificultyController.getInstance().getDificulty();
+        ImagesController imgController = new ImagesController(dificulty);
+
+        ImageSrc imgAtual = imgController.getRandImage();
+        img.setBackgroundResource(imgAtual.getDrawableNum());
+        resposta.setText(imgAtual.getImageName());
+        teamName.setText(team.getTeamName());
     }
 
     public String timeToString (int seconds) {
@@ -72,7 +112,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void controlTimer(View view) {
 
-        new CountDownTimer(180000, 1000) {
+        countDownTimer = new CountDownTimer(180000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -82,8 +122,19 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
+                Toast toast = Toast.makeText(getApplicationContext(),"Acabou o tempo!" , Toast.LENGTH_LONG);
+                toast.show();
+                Button btnFeito = (Button) findViewById(R.id.feitoBtn);
+                btnFeito.setText("Continuar");
                 crn.setText("00:00");
             }
         }.start();
+    }
+
+    private void savePoints(Team team) {
+        String[] pointsCrn = crn.getText().toString().split(":");
+        int finalPoints = Integer.valueOf(pointsCrn[0]+pointsCrn[1]);
+
+        team.addPoints(finalPoints);
     }
 }

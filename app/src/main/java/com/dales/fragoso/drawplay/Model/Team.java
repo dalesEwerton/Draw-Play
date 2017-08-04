@@ -6,8 +6,9 @@ package com.dales.fragoso.drawplay.Model;
 
 public class Team {
 
-    public String teamName;
-    public String[] teamMembers;
+    private String teamName;
+    private String[] teamMembers;
+    private int points;
 
     public Team(String teamName, String[] teamMembers) {
         this.teamName = teamName;
@@ -44,5 +45,13 @@ public class Team {
     @Override
     public int hashCode() {
         return teamName.hashCode();
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
     }
 }
