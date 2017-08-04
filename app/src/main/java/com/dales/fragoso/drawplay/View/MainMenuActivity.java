@@ -20,8 +20,16 @@ public class MainMenuActivity extends AppCompatActivity {
 
     }
 
+
     public void gameStart(View view) {
         Intent it = new Intent(MainMenuActivity.this, DificultActivity.class);
         startActivity(it);
+    }
+
+    public void exit(View view) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
