@@ -36,6 +36,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/menubuttonbg"
+        android:onClick="goToRules"
         android:text="Regras"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

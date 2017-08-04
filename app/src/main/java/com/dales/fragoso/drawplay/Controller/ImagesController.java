@@ -68,7 +68,7 @@ public class ImagesController {
     private void setTrollImages() {
         imageSrcs.add(new ImageSrc(R.drawable.bolsominion, "Bolsominion"));
         imageSrcs.add(new ImageSrc(R.drawable.chimbinhagod, "Chimbinha God of Metal"));
-        imageSrcs.add(new ImageSrc(R.drawable.gravidataubate, "Gravida de Taubate"));
+        imageSrcs.add(new ImageSrc(R.drawable.gravidataubate, "Gravida de Taubaté"));
         imageSrcs.add(new ImageSrc(R.drawable.luladrao, "Luladrão"));
         imageSrcs.add(new ImageSrc(R.drawable.monalisaemo, "Monalisa Emo"));
     }

@@ -20,7 +20,8 @@
         <activity android:name=".View.TeamsActivity" />
         <activity android:name=".View.RegisterActivity" />
         <activity android:name=".View.GameActivity" />
-        <activity android:name=".View.EndGameMainActivity"></activity>
+        <activity android:name=".View.EndGameMainActivity" />
+        <activity android:name=".View.RulesActivity"></activity>
     </application>
 
 </manifest>

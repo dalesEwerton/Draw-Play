@@ -26,6 +26,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+    public void goToRules(View view) {
+        Intent it = new Intent(MainMenuActivity.this, RulesActivity.class);
+        startActivity(it);
+    }
+
     public void exit(View view) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
