@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.dales.fragoso.drawplay.View.TutorialActivity"
+    tools:showIn="@layout/activity_tutorial">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="-Como jogar?\nNa tela inicial escolha a opção INICIAR JOGO\nVocê será redirecionado para uma tela onde tera de decidir o nível de dificuldade que deseja jogar.\n\n-Cadastrando Equipes\nAo escolher uma das opções de dificuldade, a tela seguinte exibirá o menu de equipes.\nInicialmente o menu estará vazio, você precisará cadastrar novas equipes, para isso, clique no botão CADASTRAR localizado no canto inferior esquerdo da tela. \n Na tela de cadastro de equipe você deverá obrigatóriamente informar o nome da equipe e o nome de no mínimo dois e máximo quatro integrantes da equipe. Para finalizar a operação, clique no botão CADASTRAR.\n\n-Selecionando Equipes\nApós cadastras as equipes que considerar necessárias para realizar a partida (máximo 8), você deverá selecionar as equipes que participarão da próxima rodada. Para fazer isso, marque as caixas das equipes participantes.\n\n-Hora do Jogo\nLogo após confirmar as equipes selecionadas para a próxima partida, o jogo inicializará. Nesso ponto, as equipes já devem ter definido o líder da rodada, responsável por fazer o desenho e as mímicas.\nO nome da equipe responsável pela rodada será exibida no topo da tela, e a imagem a ser desenhada iniciará no centro, junto do tempo restante até a conclusão do desenho. O membro definido pela equipe deve desenhar a imagem exibida ou realizar mímicas até que a sua equipe acerte a imagem proposta pelo aplicativo.\nNo momento em que o time concluir a tarefa, deve-se clicar no botão feito, a partir daí, a proxiima equipe terá 10 segundos para se preparar para a sua rodada. Não havendo mais equipes, o jogo será redirecionado para uma tela final com os resultados da jogada.\n\n"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+</android.support.v4.widget.NestedScrollView>

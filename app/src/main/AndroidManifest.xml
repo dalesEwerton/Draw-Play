@@ -22,7 +22,11 @@
         <activity android:name=".View.GameActivity" />
         <activity android:name=".View.EndGameMainActivity" />
         <activity android:name=".View.RulesActivity" />
-        <activity android:name=".View.RankingActivity"></activity>
+        <activity android:name=".View.RankingActivity" />
+        <activity
+            android:name=".View.TutorialActivity"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

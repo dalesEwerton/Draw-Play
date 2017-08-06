@@ -1,6 +1,7 @@
 package com.dales.fragoso.drawplay.View;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,10 @@ import com.dales.fragoso.drawplay.Model.ImageSrc;
 import com.dales.fragoso.drawplay.Model.Team;
 import com.dales.fragoso.drawplay.R;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
 public class GameActivity extends AppCompatActivity {
 
     public static Chronometer crn;
@@ -29,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     private long atualTeamPoints = 0;
     final Handler handler = new Handler();
     private static CountDownTimer countDownTimer;
+    private static CountDownTimer musicTimmer;
     int numberOfTeamPLaying = 0;
 
     @Override
@@ -44,6 +50,8 @@ public class GameActivity extends AppCompatActivity {
         TeamsController teamsController = TeamsController.getInstance();
         Team initialTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
         makeSingleGame(initialTeam);
+
+        playEffectSongs();
     }
 
 
@@ -83,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
             EndGameController endGame = EndGameController.getInstance();
             endGame.setTeamWinner(champion);
             Intent it = new Intent(GameActivity.this, EndGameMainActivity.class);
+            musicTimmer.cancel();
             startActivity(it);
         }
 
@@ -132,6 +141,7 @@ public class GameActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 updateTimer((int) millisUntilFinished / 1000);
                 atualTeamPoints = millisUntilFinished/1000;
+
             }
 
             @Override
@@ -143,6 +153,41 @@ public class GameActivity extends AppCompatActivity {
                 btnFeito.setText("Continuar");
                 crn.setText("00:00");
             }
+
         }.start();
+    }
+
+
+    private void playEffectSongs() {
+
+        final List<MediaPlayer> musics = new LinkedList<>();
+
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.ambulancia));
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.bazinga));
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.birl));
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.evillaugh));
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.moises));
+        musics.add(MediaPlayer.create(GameActivity.this, R.raw.tacalhepau));
+
+        musicTimmer = new CountDownTimer(180000 * TeamsController.getInstance().getTeamsPlaying().size(),35000) {
+            @Override
+            public void onTick(long l) {
+                MediaPlayer mediaPlayer = changeRandonSong(musics);
+                mediaPlayer.start();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
+    }
+
+
+    private MediaPlayer changeRandonSong(List<MediaPlayer> musics) {
+        Random rand = new Random();
+
+        return musics.get(rand.nextInt(6));
     }
 }

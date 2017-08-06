@@ -1,6 +1,7 @@
 package com.dales.fragoso.drawplay.View;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +16,12 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         android.support.v7.app.ActionBar bar = getSupportActionBar();
-
         bar.hide();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.funksong);
+
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
     }
 
@@ -31,6 +36,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+    public void goToTutorial(View view) {
+        Intent it = new Intent(MainMenuActivity.this, TutorialActivity.class);
+        startActivity(it);
+    }
+
     public void exit(View view) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
@@ -42,4 +52,5 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent it = new Intent(MainMenuActivity.this, RankingActivity.class);
         startActivity(it);
     }
+
 }
