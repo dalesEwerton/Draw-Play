@@ -1,5 +1,9 @@
 package com.dales.fragoso.drawplay.Model;
 
+import android.support.annotation.NonNull;
+
+import java.util.Comparator;
+
 /**
  * Created by dales on 30/07/2017.
  */
@@ -8,7 +12,7 @@ public class Team {
 
     private String teamName;
     private String[] teamMembers;
-    private int points;
+    private long points;
 
     public Team(String teamName, String[] teamMembers) {
         this.teamName = teamName;
@@ -47,11 +51,12 @@ public class Team {
         return teamName.hashCode();
     }
 
-    public int getPoints() {
+    public long getPoints() {
         return points;
     }
 
-    public void addPoints(int points) {
+    public void addPoints(long points) {
         this.points += points;
     }
+
 }

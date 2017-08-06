@@ -32,6 +32,11 @@ public class TeamsActivity extends AppCompatActivity {
             boxes[indexOfBox].setText(team.getTeamName());
             indexOfBox++;
         }
+
+        while (indexOfBox < boxes.length) {
+            boxes[indexOfBox].setEnabled(false);
+            indexOfBox++;
+        }
     }
 
     public void register(View view) {

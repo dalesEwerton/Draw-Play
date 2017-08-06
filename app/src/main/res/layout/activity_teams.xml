@@ -60,7 +60,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -72,7 +72,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
@@ -84,7 +84,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
@@ -96,7 +96,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
@@ -108,7 +108,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="32dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -120,7 +120,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
@@ -132,7 +132,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
@@ -144,7 +144,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="24dp"
         android:background="@android:drawable/button_onoff_indicator_on"
-        android:text="CheckBox"
+        android:text="Empty"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox7" />

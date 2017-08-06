@@ -37,4 +37,9 @@ public class MainMenuActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    public void goToRanking(View view) {
+        Intent it = new Intent(MainMenuActivity.this, RankingActivity.class);
+        startActivity(it);
+    }
 }

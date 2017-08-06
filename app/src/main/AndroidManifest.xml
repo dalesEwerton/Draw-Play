@@ -21,7 +21,8 @@
         <activity android:name=".View.RegisterActivity" />
         <activity android:name=".View.GameActivity" />
         <activity android:name=".View.EndGameMainActivity" />
-        <activity android:name=".View.RulesActivity"></activity>
+        <activity android:name=".View.RulesActivity" />
+        <activity android:name=".View.RankingActivity"></activity>
     </application>
 
 </manifest>

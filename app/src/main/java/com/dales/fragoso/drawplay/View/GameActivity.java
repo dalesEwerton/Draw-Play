@@ -51,7 +51,10 @@ public class GameActivity extends AppCompatActivity {
 
         final TeamsController teamsController =TeamsController.getInstance();
         Team atualTeam = teamsController.getTeamsPlaying().get(numberOfTeamPLaying);
+
         long timePoints = atualTeamPoints;
+        atualTeam.addPoints(timePoints);
+
         countDownTimer.cancel();
         atualTeamPoints = 0;
 
