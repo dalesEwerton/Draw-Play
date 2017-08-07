@@ -84,7 +84,7 @@ public class TeamsActivity extends AppCompatActivity {
                 hasOneOrMoreTeam = true;
             }
         }
-        
+
         if(teamsCtrl.getTeamList().size() == 0) {
             Toast toast = Toast.makeText(getApplicationContext(), "Primeiro, cadastre uma equipe ou mais.", Toast.LENGTH_SHORT);
             toast.show();
@@ -100,9 +100,6 @@ public class TeamsActivity extends AppCompatActivity {
             Intent it = new Intent(TeamsActivity.this, GameActivity.class);
             startActivity(it);
         }
-
-
-
 
     }
 }

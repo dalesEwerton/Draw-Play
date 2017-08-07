@@ -30,15 +30,14 @@ public class GamePlayTest {
     @Rule
     public ActivityTestRule<MainMenuActivity> mActivityTestRule = new ActivityTestRule<>(MainMenuActivity.class);
 
-
     @Test
-    public void mainMenuActivityTest() {
+    public void gamePlayTestTest() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.playBtn), withText("Iniciar Jogo"), isDisplayed()));
         appCompatButton.perform(click());
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.trollBtn), withText("Troll"), isDisplayed()));
+                allOf(withId(R.id.mediumBtn), withText("Medio"), isDisplayed()));
         appCompatButton2.perform(click());
 
         ViewInteraction appCompatButton3 = onView(
@@ -47,91 +46,53 @@ public class GamePlayTest {
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.teamName), isDisplayed()));
-        appCompatEditText.perform(replaceText("Joaquim"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("TeamONe"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.member1), isDisplayed()));
-        appCompatEditText2.perform(replaceText("Jose"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("One"), closeSoftKeyboard());
 
-        pressBack();
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.member2), isDisplayed()));
+        appCompatEditText3.perform(replaceText("ONeONe"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton4 = onView(
                 allOf(withId(R.id.registerFinalyBtn), withText("Casdastrar"), isDisplayed()));
         appCompatButton4.perform(click());
 
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.member2), isDisplayed()));
-        appCompatEditText3.perform(replaceText("Xavier"), closeSoftKeyboard());
-
-        pressBack();
-
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.registerFinalyBtn), withText("Casdastrar"), isDisplayed()));
-        appCompatButton5.perform(click());
-
         ViewInteraction appCompatCheckBox = onView(
-                allOf(withId(R.id.checkBox), withText("Joaquim"), isDisplayed()));
+                allOf(withId(R.id.checkBox), withText("TeamONe"), isDisplayed()));
         appCompatCheckBox.perform(click());
 
-        ViewInteraction appCompatCheckBox2 = onView(
-                allOf(withId(R.id.checkBox), withText("Joaquim"), isDisplayed()));
-        appCompatCheckBox2.perform(click());
+        ViewInteraction appCompatButton5 = onView(
+                allOf(withId(R.id.nextBtn), withText("Selecionar"), isDisplayed()));
+        appCompatButton5.perform(click());
 
         ViewInteraction appCompatButton6 = onView(
-                allOf(withId(R.id.CadastrarBtn), withText("Cadastrar"), isDisplayed()));
-        appCompatButton6.perform(click());
-
-        ViewInteraction appCompatButton7 = onView(
-                allOf(withId(R.id.registerFinalyBtn), withText("Casdastrar"), isDisplayed()));
-        appCompatButton7.perform(click());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.teamName), isDisplayed()));
-        appCompatEditText4.perform(replaceText("TeamBest"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.member1), isDisplayed()));
-        appCompatEditText5.perform(replaceText("John"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.member2), isDisplayed()));
-        appCompatEditText6.perform(replaceText("Dany"), closeSoftKeyboard());
-
-        ViewInteraction appCompatButton8 = onView(
-                allOf(withId(R.id.registerFinalyBtn), withText("Casdastrar"), isDisplayed()));
-        appCompatButton8.perform(click());
-
-        ViewInteraction appCompatCheckBox3 = onView(
-                allOf(withId(R.id.checkBox), withText("Joaquim"), isDisplayed()));
-        appCompatCheckBox3.perform(click());
-
-        ViewInteraction appCompatCheckBox4 = onView(
-                allOf(withId(R.id.checkBox2), withText("TeamBest"), isDisplayed()));
-        appCompatCheckBox4.perform(click());
-
-        ViewInteraction appCompatButton9 = onView(
-                allOf(withId(R.id.nextBtn), withText("Selecionar"), isDisplayed()));
-        appCompatButton9.perform(click());
-
-        ViewInteraction appCompatButton10 = onView(
                 allOf(withId(R.id.feitoBtn), withText("Feito!"),
                         withParent(allOf(withId(R.id.gamePlayLayout),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatButton10.perform(click());
+        appCompatButton6.perform(click());
 
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatButton11 = onView(
-                allOf(withId(R.id.feitoBtn), withText("Feito!"),
-                        withParent(allOf(withId(R.id.gamePlayLayout),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        appCompatButton11.perform(click());
+        ViewInteraction appCompatButton7 = onView(
+                allOf(withId(R.id.tutorialBtn), withText("Tutorial"), isDisplayed()));
+        appCompatButton7.perform(click());
+
+        pressBack();
+
+        ViewInteraction appCompatImageView = onView(
+                allOf(withId(R.id.rankingIcon), isDisplayed()));
+        appCompatImageView.perform(click());
 
     }
 

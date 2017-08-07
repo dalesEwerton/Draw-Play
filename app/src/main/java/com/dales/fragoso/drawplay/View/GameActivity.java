@@ -126,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void updateTimer(int secondsLeft) {
 
-        int minutes = (int) secondsLeft / 60;
+        int minutes = secondsLeft / 60;
         int seconds = secondsLeft - minutes * 60;
 
 
