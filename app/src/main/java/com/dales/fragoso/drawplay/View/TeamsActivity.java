@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.dales.fragoso.drawplay.Controller.TeamsController;
 import com.dales.fragoso.drawplay.Model.Team;
@@ -70,21 +71,38 @@ public class TeamsActivity extends AppCompatActivity {
     }
 
     public void select(View view) {
+
         CheckBox[] cbs = getArrayOfCheckBox();
         List<Team> teams = new ArrayList<>();
         TeamsController teamsCtrl = TeamsController.getInstance();
 
+        boolean hasOneOrMoreTeam = false;
         for(CheckBox cb : cbs) {
             if(cb.isChecked()) {
                 Team tm = teamsCtrl.getTeam(cb.getText().toString());
                 teams.add(tm);
+                hasOneOrMoreTeam = true;
             }
         }
+        
+        if(teamsCtrl.getTeamList().size() == 0) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Primeiro, cadastre uma equipe ou mais.", Toast.LENGTH_SHORT);
+            toast.show();
 
-        teamsCtrl.setTeamsPlaying(teams);
+        }else if(!hasOneOrMoreTeam) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Selecione ao menos uma equipe para prosseguir!",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }else{
+            teamsCtrl.setTeamsPlaying(teams);
+            MainMenuActivity.mediaPlayer.stop();
 
-        Intent it = new Intent(TeamsActivity.this, GameActivity.class);
-        startActivity(it);
+            Intent it = new Intent(TeamsActivity.this, GameActivity.class);
+            startActivity(it);
+        }
+
+
+
 
     }
 }

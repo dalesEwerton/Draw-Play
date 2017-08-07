@@ -10,6 +10,8 @@ import com.dales.fragoso.drawplay.R;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    static MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,7 @@ public class MainMenuActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar bar = getSupportActionBar();
         bar.hide();
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.funksong);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.funksong);
 
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
@@ -42,6 +44,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void exit(View view) {
+        mediaPlayer.stop();
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
